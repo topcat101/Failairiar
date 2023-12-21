@@ -3,7 +3,6 @@ import os.path
 
 def Powerhouse():
     file = ("C:\\Users\\(user)\\(location)\\(file)")  # <- You would need to change this file path, if youd like to use this.
-    a = ('Get-EventLog -Log Security | Where-Object {$_.EventID -eq 4625} | Format-Lis')
     b = os.path.isfile(file)
     while b == True:
         os.remove(file)
