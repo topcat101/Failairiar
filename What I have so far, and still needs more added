@@ -13,21 +13,17 @@ def Powerhouse():
     if b == False:
         file1 = open(file, "tx")
         pimple = ("Where-Object {$_.EventID -eq 4625}")
-        process = subprocess.Popen(["powershell.exe", "-noprofile", "-command",
-                                    r"""
-                                    exit (
-                                        Start-Process powershell.exe -Verb RunAs -Args '
-                                            -noprofile -command Get-EventLog -Log Security | Where-Object {$_.EventID -eq 4625} | Format-List; exit
-                                            '
-                                        ).ExitCode
-                                        """
-                                    ], stdout=subprocess.PIPE)
+    if b == False:
+        subprocess.Popen(["powershell.exe", "-noprofile", "-command",
+                                r"""
+                                exit (
+                                    Start-Process powershell.exe -Verb RunAs -Args '
+                                        -noprofile -command Get-EventLog -Log Security | Where-Object {$_.EventID -eq 4625} | Format-List > """ + (file) +""" ; exit
+                                        '
+                                    ).ExitCode
+                                    """
+                                ], stdout=subprocess.PIPE))
         #The above spawns a new process and go through the above events logs to get the events needed.
 
-        #The below still needs workings on it
-        print(process.stdout)
-        result = process.communicate()[0]
-        print(result.decode('utf-8'))
-        a = (result.decode('utf-8'))
-        file1.write(a)
-        file1.close()
+  # Would need to remove the remain text within the notepad, created within the txt file.
+
