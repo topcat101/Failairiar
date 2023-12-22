@@ -1,6 +1,8 @@
 import subprocess
 import os.path
 
+# you can call this program with the Powerhouse, there is no other reason to call than powerhouse, as I have no idea what else to call this program. Maybe the Megatron, Harry Potter, death con, Star Wars, no idea.
+
 def Powerhouse():
     file = ("C:\\Users\\(user)\\(location)\\(file)")  # <- You would need to change this file path, if youd like to use this, or place it wherever you'd like too.
     b = os.path.isfile(file)
@@ -8,6 +10,7 @@ def Powerhouse():
         os.remove(file)
         break
     b = os.path.isfile(file)
+
     #All that this does, is create a new file within python, and deletes the old one as requested.
 
     if b == False:
@@ -23,7 +26,7 @@ def Powerhouse():
                                     ).ExitCode
                                     """
                                 ], stdout=subprocess.PIPE))
-        #The above spawns a new process and go through the above events logs to get the events needed.
+        #The above spawns a new process and go through the above events logs to get the events 4625 and pushes them into the file as requested by whoever created it.
 
-  # Would need to remove the remain text within the notepad, created within the txt file.
+  # What I am trying to do next is to remove the text below 63 lines, leaving me with the 1st event log, that is provided by the current cmd above.
 
