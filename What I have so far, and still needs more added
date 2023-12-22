@@ -2,7 +2,7 @@ import subprocess
 import os.path
 
 def Powerhouse():
-    file = ("C:\\Users\\(user)\\(location)\\(file)")  # <- You would need to change this file path, if youd like to use this.
+    file = ("C:\\Users\\(user)\\(location)\\(file)")  # <- You would need to change this file path, if youd like to use this, or place it wherever you'd like too.
     b = os.path.isfile(file)
     while b == True:
         os.remove(file)
