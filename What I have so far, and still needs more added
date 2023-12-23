@@ -1,32 +1,36 @@
 import subprocess
 import os.path
+import time
 
-# you can call this program with the Powerhouse, there is no other reason to call than powerhouse, as I have no idea what else to call this program. Maybe the Megatron, Harry Potter, death con, Star Wars, no idea.
 
 def Powerhouse():
-    file = ("C:\\Users\\(user)\\(location)\\(file)")  # <- You would need to change this file path, if youd like to use this, or place it wherever you'd like too.
+    file = r"C:\\Users\\Laser\\Desktop\\test.txt"  # <- You would need to change this file path, if youd like to use this.
     b = os.path.isfile(file)
-    while b == True:
+    while b:
         os.remove(file)
         break
     b = os.path.isfile(file)
-
-    #All that this does, is create a new file within python, and deletes the old one as requested.
-
-    if b == False:
-        file1 = open(file, "tx")
-        pimple = ("Where-Object {$_.EventID -eq 4625}")
-    if b == False:
+    if not b:
+        # The above lines delete and replace the file, with a fresh file.
         subprocess.Popen(["powershell.exe", "-noprofile", "-command",
-                                r"""
-                                exit (
-                                    Start-Process powershell.exe -Verb RunAs -Args '
-                                        -noprofile -command Get-EventLog -Log Security | Where-Object {$_.EventID -eq 4625} | Format-List > """ + (file) +""" ; exit
+                          r"""
+                          exit (
+                              Start-Process powershell.exe -Verb RunAs -Args '
+                                  -noprofile -command Get-EventLog -Log Security | Where-Object {$_.EventID -eq 4625} | Format-List > """ + (
+                              file) + """ ; exit
                                         '
                                     ).ExitCode
                                     """
-                                ], stdout=subprocess.PIPE))
-        #The above spawns a new process and go through the above events logs to get the events 4625 and pushes them into the file as requested by whoever created it.
+                          ], stdout=subprocess.PIPE);
 
-  # What I am trying to do next is to remove the text below 63 lines, leaving me with the 1st event log, that is provided by the current cmd above.
+        # still need to figure out, how to put this into a loop, so that it loops over itself, multiple times, rather than waiting 10 seconds for the file to be created and having the text added.
+        tiw = 10
+        tc = 0
+        while not os.path.exists(file):
+            time.sleep(7)
+            tc += 1
+            if tc < tiw: break
 
+        print("done")
+        with open(file, 'r') as a:
+            print(a.read())
