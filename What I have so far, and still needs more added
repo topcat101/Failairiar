@@ -24,13 +24,7 @@ def Powerhouse():
                           ], stdout=subprocess.PIPE);
 
         # still need to figure out, how to put this into a loop, so that it loops over itself, multiple times, rather than waiting 10 seconds for the file to be created and having the text added.
-        tiw = 10
-        tc = 0
-        while not os.path.exists(file):
-            time.sleep(7)
-            tc += 1
-            if tc < tiw: break
-
-        print("done")
-        with open(file, 'r') as a:
-            print(a.read())
+def cludio():
+    with open(file, "r") as f:
+        lines = len(f.readlines())
+        print('Total Number of lines:', lines)
