@@ -4,7 +4,8 @@ import time
 
 
 def Powerhouse():
-    file = r"C:\\Users\\Laser\\Desktop\\test.txt"  # <- You would need to change this file path, if youd like to use this.
+    global file
+    file = ("C:\\Users\\Laser\\Desktop\\test.txt") # <- You would need to change this file path, if youd like to use this.
     b = os.path.isfile(file)
     while b:
         os.remove(file)
@@ -12,7 +13,7 @@ def Powerhouse():
     b = os.path.isfile(file)
     if not b:
         # The above lines delete and replace the file, with a fresh file.
-        subprocess.Popen(["powershell.exe", "-noprofile", "-command",
+        apples = subprocess.Popen(["powershell.exe", "-noprofile", "-command",
                           r"""
                           exit (
                               Start-Process powershell.exe -Verb RunAs -Args '
@@ -23,9 +24,10 @@ def Powerhouse():
                                     """
                           ], stdout=subprocess.PIPE);
 
-        # still need to figure out, how to put this into a loop, so that it loops over itself, multiple times, rather than waiting 10 seconds for the file to be created and having the text added.
+    return file
+
 def cludio():
     with open(file, "r") as f:
-        lines = len(f.readlines())
+        lines = len(f.read().splitlines())
         print('Total Number of lines:', lines)
-# Still needs the update, for this.
+        print(lines/2)
