@@ -5,7 +5,7 @@ import time
 
 def Powerhouse():
     global file
-    file = ("C:\\Users\\Laser\\Desktop\\test.txt") # <- You would need to change this file path, if youd like to use this.
+    file = ("FILE location") # <- You would need to change this file path, if youd like to use this.
     b = os.path.isfile(file)
     while b:
         os.remove(file)
