@@ -27,7 +27,28 @@ def Powerhouse():
     return file
 
 def cludio():
-    with open(file, "r") as f:
+    with open(file, "r+", encoding='utf-16-le') as f:
         lines = len(f.read().splitlines())
         print('Total Number of lines:', lines)
-        print(lines/2)
+
+        print(f.readline())
+        print(f.tell())
+        f.close()
+        # Remove anything above line 73
+
+    with open(file, "r", encoding='utf-16-le') as f:
+        File_lines = f.readlines()
+        print(File_lines)
+        lineindex = 142 #Need to look at something else that is not this number, but rather a calculation
+        # That is done through this program.
+        delete_from_line = lines
+        with open(file, "w", encoding='utf-16-le') as f:
+            for textline in File_lines:
+                if lineindex != delete_from_line:
+                    f.write(textline)
+
+                    lineindex += 1
+
+                elif lineindex == delete_from_line:
+                    print("woot")
+                    break
