@@ -41,6 +41,7 @@ def cludio():
         print(File_lines)
         lineindex = 142 #Need to look at something else that is not this number, but rather a calculation
         # That is done through this program.
+        # What I did to get it back to 72, was just 214 - 140 
         delete_from_line = lines
         with open(file, "w", encoding='utf-16-le') as f:
             for textline in File_lines:
